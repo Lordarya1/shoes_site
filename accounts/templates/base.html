@@ -1,0 +1,120 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en" dir="rtl">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+    <style>
+        * {
+            font-family: 'Vazir', sans-serif !important;
+        }
+        
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+            background: #00000000;
+            padding: 0;
+            margin: 0px;
+        }
+        
+        .auth-wrapper {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 1px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .vertical-slider {
+            width: 60%;
+            height: 900px;
+            /* ارتفاع متناسب با فرم‌ها */
+        }
+        
+        .vertical-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .auth-forms {
+            width: 50%;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        /* استایل اسلایدر عمودی */
+        
+        .slick-vertical .slick-slide {
+            border: none;
+            height: 900px;
+            margin-left: 100px;
+        }
+        /* رسپانسیو برای موبایل */
+        
+        @media (max-width: 768px) {
+            .auth-wrapper {
+                flex-direction: column;
+            }
+            .vertical-slider,
+            .auth-forms {
+                width: 100%;
+            }
+            .vertical-slider {
+                height: 300px;
+            }
+        }
+    </style>
+    <meta charset="utf-8">{% block head %} {% endblock head %}
+    <link rel="stylesheet" href="{% static 'accounts/auth.css' %}">
+    <title></title>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-wrapper">
+            <!-- اسلایدر عمودی -->
+            <div class="vertical-slider">
+                <div><img src="https://th.bing.com/th/id/OIP.dsChroUjD3aGpnf693va8wHaKw?w=204&h=297&c=7&r=0&o=5&pid=1.7" alt="Slide 1"></div>
+                <div><img src="https://th.bing.com/th/id/OIP.5plgKQYocXW2mrMFK9pvKgHaNK?w=187&h=333&c=7&r=0&o=5&pid=1.7" alt="Slide 2"></div>
+                <div><img src="https://th.bing.com/th/id/OIP.vUFFnqpllx31VpgqKxTw-AHaNK?w=187&h=333&c=7&r=0&o=5&pid=1.7"></div>
+            </div>
+
+            <!-- بخش فرم‌ها -->
+            <div class="auth-forms">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.vertical-slider').slick({
+                dots: false,
+                infinite: true,
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                arrows: false,
+                speed: 1000,
+                fade: false,
+                cssEase: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+            });
+        });
+    </script>
+</body>
+
+</html>
